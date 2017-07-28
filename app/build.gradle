@@ -1,0 +1,36 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.3"
+    defaultConfig {
+        applicationId "bolex.com.apkbus"
+        minSdkVersion 19
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile 'org.jsoup:jsoup:1.10.1'
+    compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.6.4'
+    compile 'com.thefinestartist:finestwebview:1.2.7'
+    compile 'com.vise.xiaoyaoyou:viselog:1.1.2'
+    compile('com.github.wwah.AndroidBasicLibs:basekit:0.3.3', {
+        exclude group: 'com.vise.xiaoyaoyou'
+    })
+}
