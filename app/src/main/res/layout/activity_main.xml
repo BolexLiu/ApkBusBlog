@@ -1,18 +1,178 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="bolex.com.apkbus.MainActivity">
+    android:background="#fff"
+    android:baselineAligned="false"
+    android:orientation="vertical">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70px"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="30px"
+        android:paddingRight="30px">
 
-</android.support.constraint.ConstraintLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingRight="10px"
+            android:text="深圳"
+            android:textColor="#646464"
+            android:textSize="22px" />
+
+        <ImageView
+            android:layout_width="22px"
+            android:layout_height="22px"
+            android:src="@drawable/drop_d" />
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="40px"
+            android:layout_marginLeft="20px"
+            android:layout_weight="1"
+            android:background="@drawable/shape_corner"
+            android:drawableLeft="@drawable/search"
+            android:hint="小区、商圈、地铁站"
+            android:paddingLeft="10px"
+            android:textColorHint="#a2a2a2"
+            android:textColorLink="#111"
+            android:textSize="18px" />
+
+    </LinearLayout>
+
+
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="210dp"
+            android:background="#0000"
+            android:padding="0dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/banner"
+            app:layout_behavior=".Blog.viewHelp.ParallaxBehavior" />
+
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="210dp"
+            android:background="#0000"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+            <android.support.design.widget.CollapsingToolbarLayout
+                android:id="@+id/appbar"
+                android:layout_width="match_parent"
+                android:layout_height="210dp"
+                android:background="#0000"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+                app:layout_scrollFlags="scroll">
+
+
+            </android.support.design.widget.CollapsingToolbarLayout>
+        </android.support.design.widget.AppBarLayout>
+
+        <android.support.v4.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#fff"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="match_parent"
+                    android:layout_height="220px"
+                    android:layout_margin="0dp"
+                    android:padding="0dp"
+                    android:scaleType="fitStart"
+                    android:src="@drawable/body" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="15px"
+                    android:background="#f8f8f8" />
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20px"
+                    android:layout_marginTop="10px"
+                    android:text="推荐房源"
+                    android:textColor="#111"
+                    android:textSize="22px" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="180px"
+                    android:layout_margin="0dp"
+                    android:padding="0dp"
+                    android:scaleType="fitStart"
+                    android:src="@drawable/item" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="150px"
+                    android:layout_margin="0dp"
+                    android:padding="0dp"
+                    android:scaleType="fitStart"
+                    android:src="@drawable/item" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="150px"
+                    android:layout_margin="0dp"
+                    android:padding="0dp"
+                    android:scaleType="fitStart"
+                    android:src="@drawable/item" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="150px"
+                    android:layout_margin="0dp"
+                    android:padding="0dp"
+                    android:scaleType="fitStart"
+                    android:src="@drawable/item" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="150px"
+                    android:layout_margin="0dp"
+                    android:padding="0dp"
+                    android:scaleType="fitStart"
+                    android:src="@drawable/item" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="150px"
+                    android:layout_margin="0dp"
+                    android:padding="0dp"
+                    android:scaleType="fitStart"
+                    android:src="@drawable/item" />
+
+            </LinearLayout>
+
+
+        </android.support.v4.widget.NestedScrollView>
+
+
+    </android.support.design.widget.CoordinatorLayout>
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="80px"
+        android:background="#f9f9f9"
+        android:src="@drawable/botton" />
+</LinearLayout>
