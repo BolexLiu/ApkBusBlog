@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import bolex.com.apkbus.Blog.adpter.BlogListAdpter;
+import bolex.com.apkbus.Blog.adpter.MyItemDecoration;
 import bolex.com.apkbus.Blog.entity.ApkBusBlogItem;
 import bolex.com.apkbus.Blog.iview.IApkBusBlogView;
 import bolex.com.apkbus.Blog.presenter.ApkBusBlogPresenter;
@@ -23,7 +24,6 @@ import cn.wwah.basekit.base.activity.BaseActivity;
  */
 
 public class BlogPageAct extends BaseActivity implements IApkBusBlogView {
-
 
     final String APK_BLOG_TYPE = "cxy_common_blog";
     int blogPage = 1;
@@ -44,6 +44,7 @@ public class BlogPageAct extends BaseActivity implements IApkBusBlogView {
 
     private void init() {
         rvBlogList.setLayoutManager(new LinearLayoutManager(mActivity));
+        rvBlogList.addItemDecoration(new MyItemDecoration(mActivity));
         apkBusBlogItems = new ArrayList<>();
         blogListAdpter = new BlogListAdpter(apkBusBlogItems);
         rvBlogList.setAdapter(blogListAdpter);

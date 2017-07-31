@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="#f9f9f9"
     android:orientation="vertical"
-    android:padding="10px">
+    android:paddingLeft="30px"
+    android:paddingRight="30px">
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -16,8 +18,8 @@
 
         <ImageView
             android:id="@+id/iv_head"
-            android:layout_width="40px"
-            android:layout_height="40px"
+            android:layout_width="60px"
+            android:layout_height="60px"
             android:src="@mipmap/ic_launcher" />
 
         <TextView
@@ -35,10 +37,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10px"
-        android:layout_marginTop="10px"
         android:text="标题"
         android:textColor="#222"
-        android:textSize="28px" />
+        android:textSize="26px" />
 
     <TextView
         android:id="@+id/tv_content"
@@ -46,9 +47,11 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="10px"
         android:layout_marginTop="10px"
+        android:ellipsize="end"
+        android:maxEms="38"
         android:text="内容内容内容内容内容内容内容内容内容内容内容内容内容。。。。"
         android:textColor="#555"
-        android:textSize="18px" />
+        android:textSize="17px" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -63,8 +66,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="time"
-            android:textColor="#888"
-            android:textSize="18px" />
+            android:textColor="#bbb"
+            android:textSize="15px" />
 
         <View
             android:layout_width="0dp"
@@ -72,12 +75,22 @@
             android:layout_weight="1" />
 
         <TextView
+            android:id="@+id/tv_heat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="温度"
+            android:textColor="#bbb"
+            android:textSize="15px" />
+
+        <TextView
             android:id="@+id/tv_comment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10px"
             android:text="评论"
-            android:textColor="#888"
-            android:textSize="18px" />
+            android:textColor="#bbb"
+            android:textSize="15px" />
+
 
         <TextView
             android:id="@+id/tv_like"
@@ -85,8 +98,8 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10px"
             android:text="喜欢"
-            android:textColor="#888"
-            android:textSize="18px" />
+            android:textColor="#bbb"
+            android:textSize="15px" />
 
     </LinearLayout>
 
