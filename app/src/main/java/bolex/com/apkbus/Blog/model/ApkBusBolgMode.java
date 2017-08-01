@@ -90,10 +90,10 @@ public class ApkBusBolgMode extends BaseModel {
             @Override
             public String call(ResponseBody responseBody) {
                 try {
+                    String html = responseBody.string();
+                    ViseLog.d(html);
 
-
-
-                    return responseBody.string();
+                    return html;
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

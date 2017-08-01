@@ -10,6 +10,6 @@ import cn.wwah.basekit.base.iview.IBaseView;
 public interface IApkBusBlogView extends IBaseView {
 
     void findBlogList(List<ApkBusBlogItem> mBlogs);
-
+    void getBlogDetails(String  html);
 
 }

@@ -34,7 +34,7 @@ public class BlogListAdpter extends BaseQuickAdapter<ApkBusBlogItem, BaseViewHol
                 .setText(R.id.tv_heat, "温度:" + item.getReadCount());
         Glide.with(mContext).
                 load(item.getAuthorHeadUrl())
-                .override(AutoUtils.getPercentWidthSize(100),AutoUtils.getPercentHeightSize(100))
+                .override(AutoUtils.getPercentWidthSize(100), AutoUtils.getPercentHeightSize(100))
                 .crossFade()
                 .transform(new GlideCircleTransform(mContext))
                 .into((ImageView) baseViewHolder.getView(R.id.iv_head));

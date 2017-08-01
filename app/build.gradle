@@ -27,9 +27,10 @@ dependencies {
 
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'org.jsoup:jsoup:1.10.1'
-    compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.6.4'
+    compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.25'
     compile 'com.thefinestartist:finestwebview:1.2.7'
     compile 'com.vise.xiaoyaoyou:viselog:1.1.2'
+    compile 'com.just.agentweb:agentweb:1.2.6'
     compile('com.github.wwah.AndroidBasicLibs:basekit:0.3.3', {
         exclude group: 'com.vise.xiaoyaoyou'
     })
