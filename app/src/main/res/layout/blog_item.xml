@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/ll_blog_item"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#f9f9f9"
+    android:background="#dd1212"
     android:orientation="vertical"
     android:paddingLeft="30px"
-    android:paddingRight="30px">
+    android:paddingRight="30px"
+    android:transitionName="@string/ll_item">
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -18,40 +20,47 @@
 
         <ImageView
             android:id="@+id/iv_head"
-            android:layout_width="60px"
-            android:layout_height="60px"
-            android:src="@mipmap/ic_launcher" />
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@mipmap/ic_launcher"
+            android:transitionName="@string/iv_head" />
 
-        <TextView
+        <com.elyeproj.loaderviewlibrary.LoaderTextView
             android:id="@+id/tv_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10px"
             android:text="name"
-            android:textColor="#222" />
+            android:textColor="#fff"
+            android:transitionName="@string/author_Name"
+            app:height_weight="0.8" />
     </LinearLayout>
 
 
-    <TextView
+    <com.elyeproj.loaderviewlibrary.LoaderTextView
         android:id="@+id/tv_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10px"
         android:text="标题"
-        android:textColor="#222"
-        android:textSize="26px" />
+        android:textColor="#fff"
+        android:textSize="21px"
+        android:transitionName="@string/tv_title"
+        app:height_weight="0.8" />
 
-    <TextView
+    <com.elyeproj.loaderviewlibrary.LoaderTextView
         android:id="@+id/tv_content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10px"
         android:layout_marginTop="10px"
         android:ellipsize="end"
-        android:maxEms="38"
+        android:maxEms="10"
+        android:maxLines="2"
         android:text="内容内容内容内容内容内容内容内容内容内容内容内容内容。。。。"
-        android:textColor="#555"
-        android:textSize="17px" />
+        android:textColor="#e9e9e9"
+        android:textSize="15px"
+        app:height_weight="0.8" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -61,46 +70,91 @@
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
-        <TextView
+        <com.elyeproj.loaderviewlibrary.LoaderTextView
             android:id="@+id/tv_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="time"
-            android:textColor="#bbb"
-            android:textSize="15px" />
+            android:textColor="#e6e6e6"
+            android:textSize="15px"
+            app:height_weight="0.8" />
 
         <View
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1" />
 
-        <TextView
-            android:id="@+id/tv_heat"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="温度"
-            android:textColor="#bbb"
-            android:textSize="15px" />
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/tv_comment"
+            <ImageView
+                android:layout_width="40px"
+                android:layout_height="40px"
+                android:layout_marginRight="5px"
+                android:src="@drawable/heat_ioc" />
+
+            <com.elyeproj.loaderviewlibrary.LoaderTextView
+                android:id="@+id/tv_heat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:text="1"
+                android:textColor="#e6e6e6"
+                android:textSize="15px"
+                app:height_weight="0.8" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10px"
-            android:text="评论"
-            android:textColor="#bbb"
-            android:textSize="15px" />
+            android:layout_marginLeft="15px"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="40px"
+                android:layout_height="40px"
+                android:layout_marginRight="5px"
+                android:src="@drawable/comment_ioc" />
+
+            <com.elyeproj.loaderviewlibrary.LoaderTextView
+                android:id="@+id/tv_comment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:text="1"
+                android:textColor="#e6e6e6"
+                android:textSize="15px"
+                app:height_weight="0.8" />
+        </LinearLayout>
 
 
-        <TextView
-            android:id="@+id/tv_like"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10px"
-            android:text="喜欢"
-            android:textColor="#bbb"
-            android:textSize="15px" />
+            android:layout_marginLeft="15px"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
+            <ImageView
+                android:layout_width="40px"
+                android:layout_height="40px"
+                android:layout_marginRight="5px"
+                android:src="@drawable/like_ioc" />
+
+            <com.elyeproj.loaderviewlibrary.LoaderTextView
+                android:id="@+id/tv_like"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:text="1"
+                android:textColor="#e6e6e6"
+                android:textSize="15px"
+                app:height_weight="0.8" />
+        </LinearLayout>
     </LinearLayout>
 
 </LinearLayout>

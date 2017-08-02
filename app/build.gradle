@@ -31,6 +31,11 @@ dependencies {
     compile 'com.thefinestartist:finestwebview:1.2.7'
     compile 'com.vise.xiaoyaoyou:viselog:1.1.2'
     compile 'com.just.agentweb:agentweb:1.2.6'
+    compile 'com.elyeproj.libraries:loaderviewlibrary:1.3.0'
+    compile 'com.youth.banner:banner:1.4.9'
+    compile 'com.yinglan.alphatabs:library:1.0.8'
+    compile 'io.github.yuweiguocn:SquareLoading:1.3.0'
+    compile 'cn.pedant.sweetalert:library:1.3'
     compile('com.github.wwah.AndroidBasicLibs:basekit:0.3.3', {
         exclude group: 'com.vise.xiaoyaoyou'
     })

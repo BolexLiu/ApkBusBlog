@@ -34,7 +34,7 @@
             android:layout_marginLeft="20px"
             android:layout_weight="1"
             android:background="@drawable/shape_corner"
-            android:drawableLeft="@drawable/search"
+            android:drawableLeft="@drawable/search_ioc"
             android:hint="小区、商圈、地铁站"
             android:paddingLeft="10px"
             android:textColorHint="#a2a2a2"

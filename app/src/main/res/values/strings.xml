@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">ApkBus</string>
+    <string name="ll_item">ll_item</string>
+    <string name="author_Name">authorName</string>
+    <string name="iv_head" />
+    <string name="tv_title">tv_title</string>
 </resources>

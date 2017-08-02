@@ -3,14 +3,119 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#fff"
+    android:background="@color/colorPrimary"
     android:baselineAligned="false"
     android:clipToPadding="true"
     android:fitsSystemWindows="true"
     android:orientation="vertical">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_blog_list"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="60px"
+        android:background="@drawable/bottom_border"
+        android:gravity="center_vertical"
+        android:paddingLeft="30px"
+        android:paddingRight="30px">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="30px"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/shape_corner"
+            android:gravity="center_vertical"
+            android:hint="RxJava、MVP、新特性"
+            android:paddingLeft="70px"
+            android:textColor="#222"
+            android:textColorHint="#a1a1a1"
+            android:textSize="12px" />
+
+        <ImageView
+            android:layout_width="30px"
+            android:layout_height="30px"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="30px"
+            android:src="@drawable/search_ioc" />
+
+    </FrameLayout>
+
+
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <com.youth.banner.Banner xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/banner"
+            android:layout_width="match_parent"
+            android:layout_height="210px"
+            android:background="#fff" />
+
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="210px"
+            android:background="#0000"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+            <android.support.design.widget.CollapsingToolbarLayout
+                android:id="@+id/appbar"
+                android:layout_width="match_parent"
+                android:layout_height="210px"
+                android:background="#0000"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
+
+            </android.support.design.widget.CollapsingToolbarLayout>
+        </android.support.design.widget.AppBarLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_blog_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#fff"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+    </android.support.design.widget.CoordinatorLayout>
+
+    <com.yinglan.alphatabs.AlphaTabsIndicator
+        android:id="@+id/alphaIndicator"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:background="@drawable/top_border"
+        android:orientation="horizontal">
+
+        <com.yinglan.alphatabs.AlphaTabView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:padding="5dp"
+            app:tabIconNormal="@mipmap/read_ioc"
+            app:tabIconSelected="@mipmap/read_ioc_p"
+            app:tabText="发现"
+            app:tabTextSize="13sp"
+            app:textColorNormal="#999"
+            app:textColorSelected="@color/colorPrimaryDark" />
+
+        <com.yinglan.alphatabs.AlphaTabView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:padding="5dp"
+            app:tabIconNormal="@mipmap/code_ioc"
+            app:tabIconSelected="@mipmap/code_ioc_p"
+            app:tabText="项目"
+            app:tabTextSize="13sp"
+            app:textColorNormal="#999"
+            app:textColorSelected="@color/colorPrimaryDark" />
+
+        <com.yinglan.alphatabs.AlphaTabView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:padding="5dp"
+            app:tabIconNormal="@mipmap/me_ioc"
+            app:tabIconSelected="@mipmap/me_ioc_p"
+            app:tabText="我的"
+            app:tabTextSize="13sp"
+            app:textColorNormal="#999"
+            app:textColorSelected="@color/colorPrimaryDark" />
+    </com.yinglan.alphatabs.AlphaTabsIndicator>
 </LinearLayout>

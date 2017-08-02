@@ -1,4 +1,4 @@
-package bolex.com.apkbus.Blog.adpter;
+package bolex.com.apkbus.Blog.viewHelp;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -17,7 +17,7 @@ public class MyItemDecoration extends RecyclerView.ItemDecoration {
 
     public MyItemDecoration(Context context) {
         dividerPaint = new Paint();
-        dividerPaint.setColor(Color.GRAY);
+        dividerPaint.setColor(Color.WHITE);
         dividerHeight = 1;
     }
 
