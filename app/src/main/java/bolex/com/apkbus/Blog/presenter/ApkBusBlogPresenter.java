@@ -5,6 +5,7 @@ import android.content.Context;
 import java.util.List;
 
 import bolex.com.apkbus.Blog.entity.ApkBusBlogItem;
+import bolex.com.apkbus.Blog.entity.Banner;
 import bolex.com.apkbus.Blog.iview.IApkBusBlogView;
 import bolex.com.apkbus.Blog.model.ApkBusBolgMode;
 import cn.wwah.basekit.base.presenter.BasePresenter;
@@ -53,6 +54,28 @@ public class ApkBusBlogPresenter extends BasePresenter {
                 isLodin = false;
             }
         });
+    }
+
+    public void findHomeBanner(){
+        mApkbusBolgMode.findHomeBanner(new Observer<List<Banner>>() {
+            @Override
+            public void onCompleted() {
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onNext(List<Banner> banners) {
+                mIApkBusBlogView.findHomeBanner(banners);
+            }
+        });
+
+
+
     }
 
 

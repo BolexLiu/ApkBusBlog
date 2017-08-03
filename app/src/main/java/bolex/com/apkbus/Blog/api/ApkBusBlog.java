@@ -10,7 +10,6 @@ import rx.Observable;
 public interface ApkBusBlog {
     @GET("plugin.php")
     Observable<ResponseBody> getBlogList(@Query("id") String id, @Query("page") int page);
-
-    @GET
-    Observable<ResponseBody> getBlogDetails(@Url String url);
+    @GET("index.php")
+    Observable<ResponseBody> getBanner();
 }

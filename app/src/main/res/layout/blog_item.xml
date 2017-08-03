@@ -22,7 +22,7 @@
             android:id="@+id/iv_head"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:src="@mipmap/ic_launcher"
+            android:src="@mipmap/launcher"
             android:transitionName="@string/iv_head" />
 
         <com.elyeproj.loaderviewlibrary.LoaderTextView

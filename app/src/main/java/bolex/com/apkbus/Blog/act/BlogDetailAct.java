@@ -2,10 +2,13 @@ package bolex.com.apkbus.Blog.act;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
-import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.v4.widget.NestedScrollView;
 import android.transition.Slide;
 import android.view.View;
+import android.view.ViewGroup;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -16,10 +19,10 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.elyeproj.loaderviewlibrary.LoaderTextView;
 import com.just.library.AgentWeb;
-import com.zhy.autolayout.utils.AutoUtils;
 
 import bolex.com.apkbus.R;
 import bolex.com.apkbus.View.GlideCircleTransform;
+import bolex.com.apkbus.View.NestedWebView;
 import bolex.com.apkbus.base.Activity.BusBaseActivity;
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -34,7 +37,7 @@ public class BlogDetailAct extends BusBaseActivity {
     @Bind(R.id.ll_root)
     LinearLayout llRoot;
     @Bind(R.id.ll_web)
-    LinearLayout llWeb;
+    NestedWebView llWeb;
     @Bind(R.id.title)
     TextView title;
     @Bind(R.id.tv_sub)
@@ -45,6 +48,12 @@ public class BlogDetailAct extends BusBaseActivity {
     ImageView ivHead;
     @Bind(R.id.tv_name)
     LoaderTextView tvName;
+    @Bind(R.id.iv_back)
+    ImageView ivBack;
+    @Bind(R.id.appbar)
+    CollapsingToolbarLayout appbar;
+
+
     private AgentWeb mAgentWeb;
 
     final String BlogBaseUrl = "http://www.apkbus.com/";
@@ -79,6 +88,7 @@ public class BlogDetailAct extends BusBaseActivity {
     }
 
     private void initDate() {
+//        llWeb.removeView(nsView);
         llRoot.setBackgroundResource(color);
         Glide.with(mActivity).
                 load(headUrl)
@@ -87,17 +97,24 @@ public class BlogDetailAct extends BusBaseActivity {
                 .into((ivHead));
         title.setText(title1);
         tvName.setText(authorName);
-        mAgentWeb = AgentWeb.with(this)//传入Activity
-                .setAgentWebParent(llWeb, new LinearLayout.LayoutParams(-1, -1))//传入AgentWeb 的父控件 ，如果父控件为 RelativeLayout ， 那么第二参数需要传入 RelativeLayout.LayoutParams
-                .useDefaultIndicator()// 使用默认进度条
-                .defaultProgressBarColor() // 使用默认进度条颜色
-                .setWebViewClient(mWebViewClient)
-                .createAgentWeb()//
-                .ready()
-                .go(BlogBaseUrl + url);
-        webSettings = mAgentWeb.getAgentWebSettings().getWebSettings();
-        webSettings.setTextZoom(fontSize);
+        llWeb.loadUrl(BlogBaseUrl + url);
+        webSettings = llWeb.getSettings();
         webSettings.setJavaScriptEnabled(true);
+//        webSettings.setTextZoom(fontSize);
+        llWeb.setWebViewClient(mWebViewClient);
+        webSettings.setLayoutAlgorithm(android.webkit.WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
+//        mAgentWeb = AgentWeb.with(this)//传入Activity
+//                .setAgentWebParent(llWeb, new ViewGroup.LayoutParams(-1, -1))
+//                .useDefaultIndicator()// 使用默认进度条
+//                .defaultProgressBarColor() // 使用默认进度条颜色
+//                .setWebViewClient(mWebViewClient)
+//                .setWebView((WebView) getLayoutInflater().inflate(R.layout.web_view, null))
+//                .createAgentWeb()//
+//                .ready()
+//                .go(BlogBaseUrl + url);
+//        webSettings = mAgentWeb.getAgentWebSettings().getWebSettings();
+//        webSettings.setTextZoom(fontSize);
+//        webSettings.setJavaScriptEnabled(true);
     }
 
 
@@ -166,10 +183,15 @@ public class BlogDetailAct extends BusBaseActivity {
 
     private void setupWindowAnimations() {
         Slide slide = null;
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             slide = new Slide();
             slide.setDuration(1000);
             getWindow().setExitTransition(slide);
         }
+    }
+
+    @OnClick(R.id.iv_back)
+    public void onViewClicked() {
+        finish();
     }
 }

@@ -14,7 +14,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import bolex.com.apkbus.Blog.api.ApkBusBlog;
 import bolex.com.apkbus.Blog.entity.ApkBusBlogItem;
+import bolex.com.apkbus.Blog.entity.Banner;
 import bolex.com.apkbus.MyApp;
 import cn.wwah.basekit.base.model.BaseModel;
 import okhttp3.ResponseBody;
@@ -80,26 +82,44 @@ public class ApkBusBolgMode extends BaseModel {
     }
 
     /**
-     * @param url
+     * 取banner
      * @param mObservable
      */
-    public void getBlogDetails(final String url, Observer<String> mObservable) {
-        bolex.com.apkbus.Blog.api.ApkBusBlog mApkBusBlog = MyApp.getApp().getRetrofit().create(bolex.com.apkbus.Blog.api.ApkBusBlog.class);
-        mApkBusBlog.getBlogDetails(url).map(new Func1<ResponseBody, String>() {
+    public void findHomeBanner(Observer<List<Banner>> mObservable) {
+        ApkBusBlog apkBusBlog = MyApp.getApp().getRetrofit().create(ApkBusBlog.class);
+        Observable<List<Banner>> responseBodyObservable = apkBusBlog.getBanner().map(new Func1<ResponseBody, List<Banner>>() {
 
             @Override
-            public String call(ResponseBody responseBody) {
+            public List<Banner> call(ResponseBody responseBody) {
+                ArrayList<Banner> mBanner = new ArrayList<>();
                 try {
-                    String html = responseBody.string();
-                    ViseLog.d(html);
-
-                    return html;
+                    Document parse = Jsoup.parse(responseBody.string());
+                    Element theTarget = parse.getElementById("theTarget");
+                    Elements items = theTarget.children();
+                    String url, title, imgUrl;
+                    for (Element item : items) {
+                        Elements a = item.getElementsByTag("a");
+                        url = a.attr("href");
+                        imgUrl = a.select("img").attr("src");
+                        if (!imgUrl.contains("http")) {
+                            imgUrl = MyApp.getApp().getBaseUrl() + imgUrl;
+                        }
+                        title = a.select("span").text();
+                        if (!url.isEmpty() || !imgUrl.isEmpty()) {
+                            mBanner.add(new Banner(url, title, imgUrl));
+                        }
+                    }
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                return null;
+
+                return mBanner;
             }
+
         });
+
+
+        subscribe(responseBodyObservable, mObservable);
     }
 
 

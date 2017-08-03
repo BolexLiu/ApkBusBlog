@@ -47,6 +47,8 @@ public class BlogPageAct extends BusBaseActivity implements IApkBusBlogView {
     private BlogListAdpter blogListAdpter;
     private ApkBusBlogPresenter mApkBusBlogPresenter;
     private LinearLayoutManager linearLayoutManager;
+    List<String> images = new ArrayList<>();
+    List<String> titles = new ArrayList<>();
 
 
     @Override
@@ -58,33 +60,14 @@ public class BlogPageAct extends BusBaseActivity implements IApkBusBlogView {
         initEvent();
     }
 
-    List<String> images = new ArrayList<>();
 
-    List<String> titles = new ArrayList<>();
 
     private void init() {
-        images.add("http://www.apkbus.com/data/attachment/forum/201707/31/161204zqgdz0cm22n2mmym.jpg");
-        images.add("http://www.apkbus.com/data/attachment/forum/201707/27/104615pgbfgd1zjb0ngugm.jpg");
-        titles.add("不做将死之蛙 安卓巴士博文大赛第三期为你加温！");
-        titles.add("国外最好的程序员必须知道和浏览的网站汇总");
-        //设置banner样式
-        banner.setBannerStyle(BannerConfig.CIRCLE_INDICATOR_TITLE_INSIDE);
-        //设置图片加载器
-        banner.setImageLoader(new GlideImageLoader());
-        //设置图片集合
-        banner.setImages(images);
-        //设置banner动画效果
-        banner.setBannerAnimation(Transformer.ZoomOutSlide);
-        //设置标题集合（当banner样式有显示title时）
-        banner.setBannerTitles(titles);
-        //设置自动轮播，默认为true
-        banner.isAutoPlay(true);
-        //设置轮播时间
-        banner.setDelayTime(3000);
-        //设置指示器位置（当banner模式中有指示器时）
-        banner.setIndicatorGravity(BannerConfig.CENTER);
-        //banner设置方法全部调用完毕时最后调用
-        banner.start();
+        initBannerStyle();
+        initBlogAdpter();
+    }
+
+    private void initBlogAdpter() {
         linearLayoutManager = new LinearLayoutManager(mActivity);
         rvBlogList.setLayoutManager(linearLayoutManager);
         rvBlogList.addItemDecoration(new MyItemDecoration(mActivity));
@@ -93,10 +76,29 @@ public class BlogPageAct extends BusBaseActivity implements IApkBusBlogView {
         rvBlogList.setAdapter(blogListAdpter);
     }
 
+    private void initBannerStyle() {
+        //设置banner样式
+        banner.setBannerStyle(BannerConfig.CIRCLE_INDICATOR_TITLE_INSIDE);
+        //设置图片加载器
+        banner.setImageLoader(new GlideImageLoader());
+
+        //设置banner动画效果
+        banner.setBannerAnimation(Transformer.ZoomOutSlide);
+
+        //设置自动轮播，默认为true
+        banner.isAutoPlay(true);
+        //设置轮播时间
+        banner.setDelayTime(3000);
+        //设置指示器位置（当banner模式中有指示器时）
+        banner.setIndicatorGravity(BannerConfig.CENTER);
+        //banner设置方法全部调用完毕时最后调用
+
+    }
+
     private void initEvent() {
         mApkBusBlogPresenter = new ApkBusBlogPresenter(BlogPageAct.this, BlogPageAct.this);
         mApkBusBlogPresenter.findBlogList(APK_BLOG_TYPE, blogPage);
-
+        mApkBusBlogPresenter.findHomeBanner();
 
         //添加滑动监听
 
@@ -120,9 +122,17 @@ public class BlogPageAct extends BusBaseActivity implements IApkBusBlogView {
     }
 
     @Override
-    public void getBlogDetails(String html) {
-
+    public void findHomeBanner(List<bolex.com.apkbus.Blog.entity.Banner> banners) {
+        for (bolex.com.apkbus.Blog.entity.Banner banner : banners) {
+            titles.add(banner.getTitle());
+            images.add(banner.getImgUrl());
+        }
+        banner.setImages(images);
+        banner.setBannerTitles(titles);
+        banner.start();
+        ViseLog.d(banners);
     }
+
 
     //如果你需要考虑更好的体验，可以这么操作
     @Override

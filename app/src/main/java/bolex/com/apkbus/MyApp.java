@@ -13,6 +13,11 @@ import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 /**
  */
 public class MyApp extends BaseKitApp {
+    public String getBaseUrl() {
+        return baseUrl;
+    }
+
+
     private String baseUrl = "http://www.apkbus.com/";
     private Retrofit retrofit;
     private static MyApp myApp;

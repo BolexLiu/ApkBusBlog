@@ -3,78 +3,109 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/ll_root"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
+    android:baselineAligned="false"
     android:clipToPadding="true"
     android:fitsSystemWindows="true"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
     android:orientation="vertical"
     android:transitionName="@string/ll_item">
+<android.support.design.widget.CoordinatorLayout
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:background="#0000"
 
-
-    <LinearLayout
+    android:layout_weight="1" >
+    <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
+        android:background="#0000"
         android:layout_height="100dp"
-        android:layout_marginBottom="10px"
-        android:orientation="vertical">
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-        <com.elyeproj.loaderviewlibrary.LoaderTextView
-            android:id="@+id/title"
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/appbar"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginLeft="20px"
-            android:ellipsize="end"
-            android:gravity="center_vertical"
-            android:maxEms="10"
-            android:maxLines="1"
-            android:text="title"
-            android:textColor="#fff"
-            android:textSize="18sp"
-            android:transitionName="@string/tv_title" />
+            android:minHeight="50dp"
+            android:layout_height="100dp"
+            app:expandedTitleMarginStart="50dp"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="60px"
-            android:layout_marginLeft="20px"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
+                    <ImageView
+                        android:id="@+id/iv_back"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/back"
+                        android:tint="#fff" />
 
-            <ImageView
-                android:id="@+id/iv_head"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@mipmap/ic_launcher"
-                android:transitionName="@string/iv_head" />
+                    <com.elyeproj.loaderviewlibrary.LoaderTextView
+                        android:id="@+id/title"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginRight="20px"
+                        android:ellipsize="end"
+                        android:gravity="center_vertical"
+                        android:maxEms="10"
+                        android:maxLines="1"
+                        android:text="title"
+                        android:textColor="#fff"
+                        android:textSize="18sp"
+                        android:transitionName="@string/tv_title" />
+                </LinearLayout>
 
-            <com.elyeproj.loaderviewlibrary.LoaderTextView
-                android:id="@+id/tv_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10px"
-                android:text="name"
-                android:textColor="#ffffff"
-                android:transitionName="@string/author_Name"
-                app:height_weight="0.8" />
-        </LinearLayout>
-    </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60px"
+                    android:layout_marginLeft="20px"
+                    android:gravity="center_vertical|right"
+                    android:orientation="horizontal">
 
+                    <ImageView
+                        android:id="@+id/iv_head"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@mipmap/launcher"
+                        android:transitionName="@string/iv_head" />
 
-    <LinearLayout
+                    <com.elyeproj.loaderviewlibrary.LoaderTextView
+                        android:id="@+id/tv_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10px"
+                        android:layout_marginRight="10px"
+                        android:text="name"
+                        android:textColor="#ffffff"
+                        android:transitionName="@string/author_Name"
+                        app:height_weight="0.8" />
+                </LinearLayout>
+            </LinearLayout>
+        </android.support.design.widget.CollapsingToolbarLayout>
+    </android.support.design.widget.AppBarLayout>
+    <bolex.com.apkbus.View.NestedWebView
         android:id="@+id/ll_web"
+app:layout_behavior="@string/appbar_scrolling_view_behavior"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:background="#fff"
-        android:orientation="vertical"
-        android:paddingTop="10px"
-        android:textColor="#fff" />
+        android:layout_height="match_parent">
+
+    </bolex.com.apkbus.View.NestedWebView>
 
 
+
+</android.support.design.widget.CoordinatorLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="60px"
         android:background="#0000"
+        android:layout_gravity="bottom"
+        app:layout_behavior="bolex.com.apkbus.Blog.viewHelp.BottomBarBehavior"
         android:orientation="horizontal">
-
         <TextView
             android:id="@+id/tv_sub"
             android:layout_width="0dp"
