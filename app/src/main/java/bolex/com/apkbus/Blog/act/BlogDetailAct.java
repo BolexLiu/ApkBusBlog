@@ -54,7 +54,7 @@ public class BlogDetailAct extends BusBaseActivity {
     CollapsingToolbarLayout appbar;
 
 
-    final String BlogBaseUrl = "http://www.apkbus.com/";
+    final   String BlogBaseUrl = "http://www.apkbus.com/";
     private String url;
     private WebSettings mWebSettings;
     private String authorName;
@@ -62,6 +62,32 @@ public class BlogDetailAct extends BusBaseActivity {
     private String title1;
     private SweetAlertDialog pDialog;
     private int color;
+   final private String  jsChangeSyle = "javascript:function myFunction(){\n" +
+            "var $jquery = jQuery.noConflict();\n" +
+            "var content=$jquery('.article');\n" +
+            "$jquery('body').empty();\n" +
+            "content.css({\n" +
+            "background:\"#fff\",\n" +
+            "position:\"absolute\",\n" +
+            "top:\"0\",left:\"0\",\n" +
+            "});\n" +
+            "$jquery('body').append(content);\n" +
+            "$jquery(\"div\").removeAttr(\"class\").removeAttr(\"style\").removeAttr(\"id\");\n" +
+            "$jquery(\"a\").removeAttr(\"class\").removeAttr(\"style\").removeAttr(\"id\");\n" +
+            "$jquery(\"h1\").removeAttr(\"class\").removeAttr(\"style\").removeAttr(\"id\");\n" +
+            "$jquery(\"h2\").removeAttr(\"class\").removeAttr(\"style\").removeAttr(\"id\");\n" +
+            "$jquery(\"h3\").removeAttr(\"class\").removeAttr(\"style\").removeAttr(\"id\");\n" +
+            "$jquery(\"h4\").removeAttr(\"class\").removeAttr(\"style\").removeAttr(\"id\");\n" +
+            "$jquery(\"h5\").removeAttr(\"class\").removeAttr(\"style\").removeAttr(\"id\");\n" +
+            "$jquery(\"h6\").removeAttr(\"class\").removeAttr(\"style\").removeAttr(\"id\");\n" +
+            "$jquery(\"img\").removeAttr(\"class\").removeAttr(\"style\").removeAttr(\"id\");\n" +
+            "$jquery(\"img\").css({width: \"100%\",height:\"100%\",objecFit:\"cover\"});\n" +
+            "$jquery(\"h1\").css({paddingBottom: \"0.3em\",fontSize:\"2em\",borderBottom:\"1px solid #eaecef\"});\n" +
+            "$jquery(\"h2\").css({paddingBottom: \"0.3em\",fontSize:\"1.5em\",borderBottom:\"1px solid #eaecef\"});\n" +
+            "$jquery(\"h3\").css({fontSize:\"1.25em\"});\n" +
+            "$jquery(\"h4\").css({fontSize:\"1em\"});\n" +
+            "$jquery(\"h5\").css({fontSize:\"0.875em\"});\n" +
+            "$jquery(\"h6\").css({fontSize:\"0.85em\"});\n}";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -107,32 +133,8 @@ public class BlogDetailAct extends BusBaseActivity {
 
             if (newProgress > 95 && isNeedExe) {
                 isNeedExe = !isNeedExe;
-                view.loadUrl("javascript:function myFunction(){\n" +
-                        "var $jquery = jQuery.noConflict();\n" +
-                        "var content=$jquery('.article');\n" +
-                        "$jquery('body').empty();\n" +
-                        "content.css({\n" +
-                        "background:\"#fff\",\n" +
-                        "position:\"absolute\",\n" +
-                        "top:\"0\",left:\"0\",\n" +
-                        "});\n" +
-                        "$jquery('body').append(content);\n" +
-                        "$jquery(\"div\").removeAttr(\"class\").removeAttr(\"style\").removeAttr(\"id\");\n" +
-                        "$jquery(\"a\").removeAttr(\"class\").removeAttr(\"style\").removeAttr(\"id\");\n" +
-                        "$jquery(\"h1\").removeAttr(\"class\").removeAttr(\"style\").removeAttr(\"id\");\n" +
-                        "$jquery(\"h2\").removeAttr(\"class\").removeAttr(\"style\").removeAttr(\"id\");\n" +
-                        "$jquery(\"h3\").removeAttr(\"class\").removeAttr(\"style\").removeAttr(\"id\");\n" +
-                        "$jquery(\"h4\").removeAttr(\"class\").removeAttr(\"style\").removeAttr(\"id\");\n" +
-                        "$jquery(\"h5\").removeAttr(\"class\").removeAttr(\"style\").removeAttr(\"id\");\n" +
-                        "$jquery(\"h6\").removeAttr(\"class\").removeAttr(\"style\").removeAttr(\"id\");\n" +
-                        "$jquery(\"img\").removeAttr(\"class\").removeAttr(\"style\").removeAttr(\"id\");\n" +
-                        "$jquery(\"img\").css({width: \"100%\",height:\"100%\",objecFit:\"cover\"});\n" +
-                        "$jquery(\"h1\").css({paddingBottom: \"0.3em\",fontSize:\"2em\",borderBottom:\"1px solid #eaecef\"});\n" +
-                        "$jquery(\"h2\").css({paddingBottom: \"0.3em\",fontSize:\"1.5em\",borderBottom:\"1px solid #eaecef\"});\n" +
-                        "$jquery(\"h3\").css({fontSize:\"1.25em\"});\n" +
-                        "$jquery(\"h4\").css({fontSize:\"1em\"});\n" +
-                        "$jquery(\"h5\").css({fontSize:\"0.875em\"});\n" +
-                        "$jquery(\"h6\").css({fontSize:\"0.85em\"});\n}");
+
+                view.loadUrl(jsChangeSyle);
                 view.loadUrl("javascript:myFunction()");
                 pDialog.cancel();
             }
